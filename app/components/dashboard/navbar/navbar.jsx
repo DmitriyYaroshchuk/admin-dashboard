@@ -1,15 +1,15 @@
-'use client'
-import { usePathname } from 'next/navigation'
-import classes from './navbar.module.css'
+'use client';
+import { usePathname } from 'next/navigation';
+import classes from './navbar.module.css';
 import {
   MdNotifications,
   MdOutlineChat,
   MdPublic,
   MdSearch,
-} from 'react-icons/md'
+} from 'react-icons/md';
 
 function Navbar() {
-  const pathname = usePathname()
+  const pathname = usePathname();
 
   return (
     <div className={classes.container}>
@@ -31,6 +31,6 @@ function Navbar() {
         </div>
       </div>
     </div>
-  )
+  );
 }
-export default Navbar
+export default Navbar;
