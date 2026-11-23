@@ -1,10 +1,10 @@
-'use client'
-import Link from 'next/link'
-import classes from './menuLink.module.css'
-import { usePathname } from 'next/navigation'
+'use client';
+import Link from 'next/link';
+import classes from './menuLink.module.css';
+import { usePathname } from 'next/navigation';
 
 function MenuLink({ item }) {
-  const pathname = usePathname()
+  const pathname = usePathname();
   return (
     <Link
       href={item.path}
@@ -13,6 +13,6 @@ function MenuLink({ item }) {
       {item.icon}
       {item.title}
     </Link>
-  )
+  );
 }
-export default MenuLink
+export default MenuLink;

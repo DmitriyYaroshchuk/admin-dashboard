@@ -9,10 +9,10 @@ import {
   MdOutlineSettings,
   MdHelpCenter,
   MdLogout,
-} from 'react-icons/md'
-import MenuLink from './menuLink/menuLink'
-import Image from 'next/image'
-import classes from './sidebar.module.css'
+} from 'react-icons/md';
+import MenuLink from './menuLink/menuLink';
+import Image from 'next/image';
+import classes from './sidebar.module.css';
 
 const menuItems = [
   {
@@ -75,7 +75,7 @@ const menuItems = [
       },
     ],
   },
-]
+];
 
 function Sidebar() {
   return (
@@ -108,6 +108,6 @@ function Sidebar() {
         Logout
       </button>
     </div>
-  )
+  );
 }
-export default Sidebar
+export default Sidebar;
