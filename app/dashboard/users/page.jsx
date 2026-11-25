@@ -32,7 +32,7 @@ async function UsersPage() {
               <td>
                 <div className={classes.user}>
                   <Image
-                    src={user.image || '/noavatar.png'}
+                    src={user.img || '/noavatar.png'}
                     alt=""
                     width={40}
                     height={40}
