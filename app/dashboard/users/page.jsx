@@ -5,8 +5,9 @@ import classes from '@/app/components/dashboard/users/users.module.css';
 import Pagination from '@/app/components/dashboard/pagination/pagination';
 import { fetchUsers } from '@/app/lib/data';
 
-async function UsersPage() {
-  const users = await fetchUsers();
+async function UsersPage({ searchParams }) {
+  const q = searchParams?.q || '';
+  const users = await fetchUsers(q);
   return (
     <div className={classes.container}>
       <div className={classes.top}>
