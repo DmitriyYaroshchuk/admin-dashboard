@@ -4,10 +4,12 @@ import Search from '@/app/components/dashboard/search/search';
 import classes from '@/app/components/dashboard/users/users.module.css';
 import Pagination from '@/app/components/dashboard/pagination/pagination';
 import { fetchUsers } from '@/app/lib/data';
+import { parsePage } from '@/app/lib/pagination';
 
 async function UsersPage({ searchParams }) {
   const q = searchParams?.q || '';
-  const users = await fetchUsers(q);
+  const page = parsePage(searchParams?.page);
+  const { count, users } = await fetchUsers(q, page);
   return (
     <div className={classes.container}>
       <div className={classes.top}>
@@ -66,7 +68,7 @@ async function UsersPage({ searchParams }) {
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 }
