@@ -1,9 +1,10 @@
 import classes from '@/app/components/dashboard/addUser/addUser.module.css';
+import { addUser } from '@/app/lib/actions';
 
 function AddUserPage() {
   return (
     <div className={classes.container}>
-      <form className={classes.form}>
+      <form action={addUser} className={classes.form}>
         <input type="text" placeholder="username" name="username" required />
         <input type="email" placeholder="email" name="email" required />
         <input
