@@ -5,6 +5,7 @@ import Pagination from '@/app/components/dashboard/pagination/pagination';
 import { parsePage } from '@/app/lib/pagination';
 import { fetchProducts } from '@/app/lib/data';
 import classes from '@/app/components/dashboard/products/products.module.css';
+import { deleteProduct } from '@/app/lib/actions';
 
 async function ProductsPage({ searchParams }) {
   const q = searchParams?.q || '';
@@ -56,12 +57,15 @@ async function ProductsPage({ searchParams }) {
                   >
                     View
                   </Link>
-                  <button
-                    type="button"
-                    className={`${classes.button} ${classes.delete}`}
-                  >
-                    Delete
-                  </button>
+                  <form action={deleteProduct}>
+                    <input type="hidden" name="id" value={product.id} />
+                    <button
+                      type="submit"
+                      className={`${classes.button} ${classes.delete}`}
+                    >
+                      Delete
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
