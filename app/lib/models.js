@@ -6,8 +6,8 @@ const userSchema = new mongoose.Schema(
       type: String,
       required: true,
       unique: true,
-      min: 3,
-      max: 20,
+      minLength: 3,
+      maxLength: 30,
     },
     email: {
       type: String,
@@ -17,12 +17,13 @@ const userSchema = new mongoose.Schema(
     password: {
       type: String,
       required: true,
+      select: false,
     },
     img: {
       type: String,
     },
     isAdmin: {
-      type: String,
+      type: Boolean,
       default: false,
     },
     isActive: {

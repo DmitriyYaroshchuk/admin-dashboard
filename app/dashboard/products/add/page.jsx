@@ -1,11 +1,12 @@
 import classes from '@/app/components/dashboard/addProduct/addProduct.module.css';
+import { addProduct } from '@/app/lib/actions';
 
 function AddProductPage() {
   return (
     <div className={classes.container}>
-      <form className={classes.form}>
+      <form action={addProduct} className={classes.form}>
         <input type="text" placeholder="title" name="title" required />
-        <select name="category" id="category">
+        <select name="cat" id="cat">
           <option value="general">Choose a Category</option>
           <option value="kitchen">Kitchen</option>
           <option value="phone">Phone</option>

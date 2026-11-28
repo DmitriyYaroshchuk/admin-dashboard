@@ -4,9 +4,13 @@ import Search from '@/app/components/dashboard/search/search';
 import classes from '@/app/components/dashboard/users/users.module.css';
 import Pagination from '@/app/components/dashboard/pagination/pagination';
 import { fetchUsers } from '@/app/lib/data';
+import { parsePage } from '@/app/lib/pagination';
+import { deleteUser } from '@/app/lib/actions';
 
-async function UsersPage() {
-  const users = await fetchUsers();
+async function UsersPage({ searchParams }) {
+  const q = searchParams?.q || '';
+  const page = parsePage(searchParams?.page);
+  const { count, users } = await fetchUsers(q, page);
   return (
     <div className={classes.container}>
       <div className={classes.top}>
@@ -53,19 +57,22 @@ async function UsersPage() {
                   >
                     View
                   </Link>
-                  <button
-                    type="button"
-                    className={`${classes.button} ${classes.delete}`}
-                  >
-                    Delete
-                  </button>
+                  <form action={deleteUser}>
+                    <input type="hidden" name="id" value={user.id} />
+                    <button
+                      type="submit"
+                      className={`${classes.button} ${classes.delete}`}
+                    >
+                      Delete
+                    </button>
+                  </form>
                 </div>
               </td>
             </tr>
           ))}
         </tbody>
       </table>
-      <Pagination />
+      <Pagination count={count} />
     </div>
   );
 }
