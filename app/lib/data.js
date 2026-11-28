@@ -1,3 +1,4 @@
+import { isValidObjectId } from 'mongoose';
 import { Product, User } from './models';
 import { connectToDB } from './utils';
 import { ITEM_PER_PAGE } from './pagination';
@@ -21,6 +22,18 @@ export const fetchUsers = async (q = '', page = 1) => {
   }
 };
 
+export const fetchUser = async (id) => {
+  if (!isValidObjectId(id)) return null;
+  try {
+    await connectToDB();
+    const user = await User.findById(id);
+    return user;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to fetch user');
+  }
+};
+
 export const fetchProducts = async (q = '', page = 1) => {
   const filter = { title: { $regex: new RegExp(escapeRegex(q), 'i') } };
 
@@ -35,5 +48,17 @@ export const fetchProducts = async (q = '', page = 1) => {
   } catch (error) {
     console.log(error);
     throw new Error('Failed to fetch products');
+  }
+};
+
+export const fetchProduct = async (id) => {
+  if (!isValidObjectId(id)) return null;
+  try {
+    await connectToDB();
+    const product = await Product.findById(id);
+    return product;
+  } catch (error) {
+    console.error(error);
+    throw new Error('Failed to fetch product');
   }
 };
